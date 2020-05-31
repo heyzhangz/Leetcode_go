@@ -11,7 +11,7 @@ package question5
 /*
 	思路:	从头变量每个字符，查找前后是否有回文；如果向后相邻也相等(偶数情况)，再判断一次 time O(n^2) space O(1)
 	题解:
-		1. 动态规划，没啥意思, time O(n^2) space O(n^2)
+		1. 动态规划，没啥意思, time O(n^2) space O(n^2) 长度为[i,j]的字符串取决于[i+1, j-1]
 		2. Manacher算法, time O(n) space O(n)
 */
 
