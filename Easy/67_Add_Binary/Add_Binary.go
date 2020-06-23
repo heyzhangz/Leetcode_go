@@ -1,6 +1,9 @@
 package question67
 
-import "strconv"
+import (
+	"math/big"
+	"strconv"
+)
 
 /*
 	67. 二进制求和
@@ -52,4 +55,13 @@ func addBinary(a string, b string) string {
 	}
 
 	return ans
+}
+
+func addBinary_big(a string, b string) string {
+
+	ai, _ := new(big.Int).SetString(a, 2)
+	bi, _ := new(big.Int).SetString(b, 2)
+
+	ai.Add(ai, bi)
+	return ai.Text(2)
 }

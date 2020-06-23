@@ -17,7 +17,7 @@ func TestQ202(t *testing.T) {
 	print("run test mine\n")
 	for _, test := range tests {
 		t.Run(test.testname, func(t *testing.T) {
-			if got := addBinary(test.inputa, test.inputb); test.answer != got {
+			if got := addBinary_big(test.inputa, test.inputb); test.answer != got {
 				t.Errorf("addBinary() = %v, want %v", got, test.answer)
 			}
 		})
