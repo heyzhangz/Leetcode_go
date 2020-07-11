@@ -1,6 +1,9 @@
 package questionm02_05
 
-import "math"
+import (
+    "math"
+    "strings"
+)
 
 /*
 	面试题 17.13. 恢复空格
@@ -12,7 +15,7 @@ import "math"
 /*
 	思路: 没啥思路；看题解用到了字典树，那么剪枝+深度应该ok，不过有重复判断应该..递归 + hash
 	题解:
-        倒序字典树 + dp。。
+        这个从后往前的dp有点东西
 */
 
 type TrieTree struct {
@@ -93,4 +96,28 @@ func min(x, y int) int {
         return x
     }
     return y
+}
+
+func respace_onlydp(dictionary []string, sentence string) int {
+
+    dp := make([]int, len(sentence) + 1)
+    dp[len(sentence)] = 0
+
+    for i := len(sentence) - 1; i >= 0; i-- {
+        b := sentence[i:]
+        min := dp[i + 1] + 1
+
+        for j := 0; j < len(dictionary); j++ {
+
+            if strings.HasPrefix(b, dictionary[j]) {
+
+                if min > dp[i + len(dictionary[j])] {
+                    min = dp[i + len(dictionary[j])]
+                }
+            }
+        }
+
+        dp[i] = min
+    }
+    return dp[0]
 }
