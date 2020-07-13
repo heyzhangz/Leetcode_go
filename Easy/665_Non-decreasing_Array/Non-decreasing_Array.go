@@ -1,4 +1,4 @@
-package question1
+package question665
 
 import "math"
 
